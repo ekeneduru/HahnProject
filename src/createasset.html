@@ -1,0 +1,102 @@
+<template>
+    <br/>
+    <div class="card">
+        <div class="card-header text-white bg-primary">
+          Create Asset
+        </div>
+        <div class="card-body">
+          <form role="form">
+            <div class="form-group row" >
+              <label class="col-md-3 col-form-label">Asset Name</label>
+              <div class="col-md-9" >
+                <input type="text" id="AssetName" placeholder="Asset Name" class="form-control" 
+                validation-errors.bind="AssetNameErrors"
+                class.bind="AssetNameErrors.length ? 'border border-danger' : ''"
+                value.bind="assetmodel.AssetName & validate">
+                &nbsp;
+                <div  class="alert alert-danger" repeat.for="errorInfo of AssetNameErrors">
+                  ${errorInfo.error.message}
+                </div>
+              </div>
+            </div>
+    
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label">Department</label>
+              <div class="col-md-9">
+                <select id="Department"  value.bind="assetmodel.Department & validate" class="form-control" 
+                validation-errors.bind="DepartmentErrors"
+                class.bind="DepartmentErrors.length ? 'border border-danger' : ''">
+                  <option model.bind="0">Choose...</option>
+                  <option repeat.for="department of departments"
+                          model.bind="department.id">
+                          ${department.id}-${department.name}
+                  </option>
+                </select>
+                
+                &nbsp;
+                <div  class="alert alert-danger" repeat.for="errorInfo of DepartmentErrors">
+                  ${errorInfo.error.message}
+                </div>
+
+              </div>
+            
+            </div>
+    
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label">Country</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Country" class="form-control "
+                 value.bind="assetmodel.CountryOfDepartment & validate"
+                 validation-errors.bind="CountryOfDepartmentErrors"
+                class.bind="CountryOfDepartmentErrors.length ? 'border border-danger' : ''">
+                &nbsp;
+                <div  class="alert alert-danger" repeat.for="errorInfo of CountryOfDepartmentErrors">
+                  ${errorInfo.error.message}
+                </div>
+
+              </div>
+
+             </div>
+    
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label">Email Adress</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Email Adress" class="form-control" value.bind="assetmodel.EMailAdressOfDepartment & validate"
+                validation-errors.bind="EMailAdressOfDepartmentErrors"
+                class.bind="EMailAdressOfDepartmentErrors.length ? 'border border-danger' : ''"
+                >
+                &nbsp;
+                <div  class="alert alert-danger" repeat.for="errorInfo of EMailAdressOfDepartmentErrors">
+                  ${errorInfo.error.message}
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label">Purchase Date</label>
+              <div class="col-md-9">
+                <input type="text" placeholder="Purchase Date" class="form-control" value.bind="assetmodel.PurchaseDate & validate" 
+                validation-errors.bind="PurchaseDateErrors"
+                class.bind="PurchaseDateErrors.length ? 'border border-danger' : ''"
+                >
+                &nbsp;
+                <div  class="alert alert-danger" repeat.for="errorInfo of PurchaseDateErrors">
+                  ${errorInfo.error.message}
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label"></label>
+              <div class="col-md-9">
+                <label><input type="checkbox" checked.bind="assetmodel.Broken">  Broken</label>
+          
+              </div>
+            </div>
+          </form>
+          <div>
+            <button class="btn btn-success " click.delegate="reset()" disabled.bind="!canReset">Reset</button>
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn btn-success float-right" click.delegate="save()" disabled.bind="!canSave">Save</button>
+          </div>
+        </div>
+  </template>
+  

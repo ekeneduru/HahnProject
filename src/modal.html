@@ -1,0 +1,14 @@
+<template>
+    <ux-dialog>
+       <ux-dialog-body style="width:600px; ">
+          <div >
+          <h4 style="white-space: pre-line">${message}</h4>
+         </div>
+       </ux-dialog-body>
+ 
+       <ux-dialog-footer>
+          
+          <button click.trigger = "controller.ok(message)">Ok</button>
+       </ux-dialog-footer>	
+    </ux-dialog>	
+ </template>

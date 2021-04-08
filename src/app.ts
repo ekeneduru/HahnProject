@@ -7,8 +7,6 @@ import 'font-awesome/css/font-awesome.css';
 export class App {
 
   router: Router;
-  
-
     configureRouter(config: RouterConfiguration, router: Router){
       config.title = 'Asset';
       config.options.pushState = true;
@@ -20,7 +18,4 @@ export class App {
   
       this.router = router;
     }
-  
-  
-   // public message = 'Hello World!';
 }
